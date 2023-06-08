@@ -1,0 +1,17 @@
+ <div class="card " >
+    <img [src]="product.thumbnail" style="height: 200px;" class="card-img-top" alt="...">
+    <h4 class="card-title my-1 text-capitalize">{{product.title}}</h4>
+    <p class="fw-bold" [ngStyle]="{'color':product.stock>0?'green':'red'}">{{product.stock|stock}}</p>
+    <div class="card-body d-flex " >
+      <p class="card-text mx-5 text-capitalize fw-bold">{{product.brand}} :</p>
+      <p class="card-text " style="font-weight: bolder;">{{product.price | currency:'LE' }}</p>
+    </div>
+      <div class="d-grid gap-2 ">
+        <button type="button" class="btn btn-primary col-4 m-auto " *ngIf="!addButton" (click)="addButton = true">Add to Card</button>
+        <div class="d-flex " *ngIf="addButton">
+          <input type="number" class="fore-control" [(ngModel)]="saveNumber">
+          <button class="btn btn-success mx-1" (click)="add();addButton = false">add</button>
+        </div>
+        <button class="btn btn-outline-primary col-4 m-auto" type="button" (click)="detailsList()">Veiw Details</button>
+      </div>
+  </div>
